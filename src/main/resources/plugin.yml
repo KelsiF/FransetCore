@@ -1,0 +1,18 @@
+name: FransetCore
+version: 1.3
+main: org.kelsi.fransetcore
+api-version: 1.16
+authors: [ Kelsi ]
+commands:
+  broadcast:
+    aliases: [bc, bcast]
+  rules:
+    aliases: [правила]
+  me:
+    usage: "/me <действие>\nНапример: /me открыл дверь"
+  do:
+    usage: "/do <действие>\nНапример: /do яблоко в руке"
+  try:
+    usage: "/try <действие>\nНапример: /try мягко приземлился"
+  roll:
+    usage: "/roll <сообщение>"

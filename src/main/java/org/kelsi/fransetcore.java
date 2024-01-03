@@ -3,6 +3,7 @@ package org.kelsi;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.kelsi.commands.*;
+import org.kelsi.listeners.deathEvents;
 import org.kelsi.listeners.inventorylimitEvents;
 import org.kelsi.listeners.spawnEvent;
 
@@ -17,6 +18,7 @@ public final class fransetcore extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new spawnEvent(this), this);
         getServer().getPluginManager().registerEvents(new inventorylimitEvents(this), this);
+        getServer().getPluginManager().registerEvents(new deathEvents(this), this);
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         Objects.requireNonNull(getCommand("broadcast")).setExecutor(new broadcastCommand());

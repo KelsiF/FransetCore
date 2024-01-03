@@ -6,8 +6,6 @@ authors: [ Kelsi ]
 commands:
   broadcast:
     aliases: [bc, bcast]
-  rules:
-    aliases: [правила]
   me:
     usage: "/me <действие>\nНапример: /me открыл дверь"
   do:
@@ -16,3 +14,18 @@ commands:
     usage: "/try <действие>\nНапример: /try мягко приземлился"
   roll:
     usage: "/roll <сообщение>"
+  setevent:
+    usage: "/setevent"
+    aliases: [se]
+  removeevent:
+    usage: "/removeevent"
+    aliases: [re, de, deleteevent]
+  event:
+    usage: "/event"
+  mobvote:
+    usage: "/mobvote Тыква\n
+    /mobvote Призрак\n
+    /mobvote Босс-Призрак"
+  spawn:
+    usage: "/spawn - чтобы телепортироваться на спавн\n /spawn set - чтобы установить точку спавна"
+    aliases: [hub, спавн, хаб]

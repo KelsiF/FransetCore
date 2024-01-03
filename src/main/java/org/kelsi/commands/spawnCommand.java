@@ -38,8 +38,12 @@ public class spawnCommand implements CommandExecutor {
                     plugin.saveConfig();
 
                     player.sendMessage(ChatColor.GREEN + "Точка спавна установлена!");
+
+                    return true;
                 } else {
                     player.sendMessage(ChatColor.RED + "У вас недостаточно прав!");
+
+                    return true;
                 }
             }
         }

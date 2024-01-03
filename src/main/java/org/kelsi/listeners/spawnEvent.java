@@ -1,5 +1,6 @@
 package org.kelsi.listeners;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -7,8 +8,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.spigotmc.event.player.PlayerSpawnLocationEvent;
+
+import java.util.Arrays;
 
 public class spawnEvent implements Listener {
 
@@ -28,12 +32,6 @@ public class spawnEvent implements Listener {
             if (player.getLocation() != loc) {
                 player.teleport(loc);
             }
-        }
-
-        ItemStack slot = new ItemStack(Material.BARRIER);
-        Inventory inv = player.getInventory();
-        for (int x = 9; x <= 35; x++) {
-            inv.setItem(x, slot);
         }
     }
 

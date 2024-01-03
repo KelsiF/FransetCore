@@ -48,6 +48,6 @@ public class spawnCommand implements CommandExecutor {
             }
         }
 
-        return false;
+        return true;
     }
 }

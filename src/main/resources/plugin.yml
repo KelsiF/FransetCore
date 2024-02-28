@@ -1,0 +1,38 @@
+name: FransetCore
+version: ${project.version}
+main: org.kelsi.fransetcore
+api-version: 1.16
+authors: [ Kelsi ]
+softdepend: [PlaceholderAPI]
+commands:
+  broadcast:
+    aliases: [bc, bcast]
+  me:
+    usage: "/me <действие>\nНапример: /me открыл дверь"
+  do:
+    usage: "/do <действие>\nНапример: /do яблоко в руке"
+  try:
+    usage: "/try <действие>\nНапример: /try мягко приземлился"
+  roll:
+    usage: "/roll <сообщение>"
+  setevent:
+    usage: "/setevent"
+    aliases: [se]
+  removeevent:
+    usage: "/removeevent"
+    aliases: [re, de, deleteevent]
+  event:
+    usage: "/event"
+  spawn:
+    usage: "/spawn - чтобы телепортироваться на спавн\n /spawn set - чтобы установить точку спавна"
+    aliases: [hub, спавн, хаб]
+  loc:
+    usage: "/loc <игрок> <требуемый уровень> <координаты>"
+  loctp:
+    usage: "/loctp <игрок> <требуемый уровень> <координаты>"
+  reset:
+    usage: "/reset чтобы сбросить свою статистику ИЛИ\n/reset all чтобы сбросить статистику всех игроков(для администрации)"
+  donated:
+    usage: "Чтобы увеличить количество задоначенной суммы игрока, используйте команду в формате: \n/donated <ник игрока> <число>"
+  take:
+    usage: "/take <player> <number>\nПример: /take KelsiDev 100 - у игрока KelsiDev будет взято 100 монет."

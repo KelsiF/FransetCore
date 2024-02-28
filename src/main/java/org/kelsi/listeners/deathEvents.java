@@ -19,11 +19,20 @@ public class deathEvents implements Listener {
         event.getEntity();
         Player player = event.getEntity();
 
+
         float exp = player.getExp();
+        int level = player.getLevel();
         float num = exp * 25 / 100;
-        exp = exp - num;
-        player.setExp(exp);
-        player.sendMessage(ChatColor.RED + " \nВы потеряли 25% от общего количества вашего опыта, а именно: " + String.format("%.1f", num) + "\nТеперь ваш опыт равен: " + String.format("%.1f", exp) + "\n ");
+        if (exp > 0.1) {
+            exp = exp - num;
+            player.setExp(exp);
+            player.sendMessage(ChatColor.RED + " \nВы потеряли 25% от общего количества вашего опыта, а именно: " + String.format("%.1f", num) + "\nТеперь ваш опыт равен: " + String.format("%.1f", exp) + "\n ");
+        }
+        if (exp <= 0.1) {
+            level = level - 1;
+            player.setLevel(level);
+            player.sendMessage(ChatColor.RED + "\nПоскольку ваш опыт меньше или равен 0.1, то вас уровень понижен на 1 единицу.\nТеперь ваш уровень равен: " + level + "\n");
+        }
     }
 
 }

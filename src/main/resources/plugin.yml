@@ -1,8 +1,9 @@
 name: FransetCore
-version: 1.3
+version: ${project.version}
 main: org.kelsi.fransetcore
 api-version: 1.16
 authors: [ Kelsi ]
+softdepend: [PlaceholderAPI]
 commands:
   broadcast:
     aliases: [bc, bcast]
@@ -22,10 +23,16 @@ commands:
     aliases: [re, de, deleteevent]
   event:
     usage: "/event"
-  mobvote:
-    usage: "/mobvote Тыква\n
-    /mobvote Призрак\n
-    /mobvote Босс-Призрак"
   spawn:
     usage: "/spawn - чтобы телепортироваться на спавн\n /spawn set - чтобы установить точку спавна"
     aliases: [hub, спавн, хаб]
+  loc:
+    usage: "/loc <игрок> <требуемый уровень> <координаты>"
+  loctp:
+    usage: "/loctp <игрок> <требуемый уровень> <координаты>"
+  reset:
+    usage: "/reset чтобы сбросить свою статистику ИЛИ\n/reset all чтобы сбросить статистику всех игроков(для администрации)"
+  donated:
+    usage: "Чтобы увеличить количество задоначенной суммы игрока, используйте команду в формате: \n/donated <ник игрока> <число>"
+  take:
+    usage: "/take <player> <number>\nПример: /take KelsiDev 100 - у игрока KelsiDev будет взято 100 монет."

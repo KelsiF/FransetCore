@@ -26,7 +26,7 @@ public class inventorylimitEvents implements Listener {
     int slots = 0;
 
     @EventHandler
-    public void onPlayerSpawn(PlayerRespawnEvent event) {
+    public void onPlayerRespapawn(PlayerRespawnEvent event) {
         Player player = event.getPlayer();
         Inventory inv = player.getInventory();
 
@@ -36,20 +36,39 @@ public class inventorylimitEvents implements Listener {
         slotMeta.setDisplayName(ChatColor.RED + "Слот заблокирован");
         slotMeta.setCustomModelData(10000);
 
+        if (inv.contains(Material.PURPLE_SHULKER_BOX)) {
+            if (inv.getItem(9).getType() == Material.BARRIER) {
+                for (int x = 9; x <= 35; x++) {
+                    inv.setItem(x, new ItemStack(Material.AIR));
+                }
+            }
+        }
+
         if (inv.contains(Material.RED_SHULKER_BOX)) {
             for (int x = 9; x <= 17; x++) {
                 slotMeta.setLore(Arrays.asList(ChatColor.WHITE + "Чтобы разблокировать, ", ChatColor.WHITE + "купите рюкзак.", "id: " + x));
                 slot.setItemMeta(slotMeta);
                 inv.setItem(x, slot);
             }
-        } else if (inv.contains(Material.SHULKER_BOX)) {
+            if (inv.getItem(18).getType() == Material.BARRIER) {
+                for (int x = 18; x <= 35; x++) {
+                    inv.setItem(x, new ItemStack(Material.AIR));
+                }
+            }
+        } if (inv.contains(Material.SHULKER_BOX)) {
 
-            for (int x = 9; x <= 26 - slots; x++) {
+            for (int x = 9; x <= 26; x++) {
                 slotMeta.setLore(Arrays.asList(ChatColor.WHITE + "Чтобы разблокировать, ", ChatColor.WHITE + "купите рюкзак.", "id: " + x));
                 slot.setItemMeta(slotMeta);
                 inv.setItem(x, slot);
             }
-        } else {
+            if (inv.getItem(27).getType() == Material.BARRIER) {
+                for (int x = 27; x <= 35; x++) {
+                    inv.setItem(x, new ItemStack(Material.AIR));
+                }
+            }
+        }
+        if (!inv.contains(Material.RED_SHULKER_BOX) || !inv.contains(Material.SHULKER_BOX)) {
             for (int x = 9; x <= 35; x++) {
                 slotMeta.setLore(Arrays.asList(ChatColor.WHITE + "Чтобы разблокировать, ", ChatColor.WHITE + "купите рюкзак.", "id: " + x));
                 slot.setItemMeta(slotMeta);
@@ -69,21 +88,39 @@ public class inventorylimitEvents implements Listener {
         slotMeta.setDisplayName(ChatColor.RED + "Слот заблокирован");
         slotMeta.setCustomModelData(10000);
 
+        if (inv.contains(Material.PURPLE_SHULKER_BOX)) {
+            if (inv.getItem(18).getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.RED + "Слот заблокирован")) {
+                for (int x = 9; x <= 35; x++) {
+                    inv.setItem(x, new ItemStack(Material.AIR));
+                }
+            }
+        }
+
         if (inv.contains(Material.RED_SHULKER_BOX)) {
             for (int x = 9; x <= 17; x++) {
                 slotMeta.setLore(Arrays.asList(ChatColor.WHITE + "Чтобы разблокировать, ", ChatColor.WHITE + "купите рюкзак.", "id: " + x));
                 slot.setItemMeta(slotMeta);
                 inv.setItem(x, slot);
             }
-        } else if (inv.contains(Material.SHULKER_BOX)) {
+            if (inv.getItem(18).getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.RED + "Слот заблокирован")) {
+                for (int x = 18; x <= 35; x++) {
+                    inv.setItem(x, new ItemStack(Material.AIR));
+                }
+            }
+        } if (inv.contains(Material.SHULKER_BOX)) {
 
-            for (int x = 9; x <= 26 - slots; x++) {
+            for (int x = 9; x <= 26; x++) {
                 slotMeta.setLore(Arrays.asList(ChatColor.WHITE + "Чтобы разблокировать, ", ChatColor.WHITE + "купите рюкзак.", "id: " + x));
                 slot.setItemMeta(slotMeta);
                 inv.setItem(x, slot);
             }
+            if (inv.getItem(18).getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.RED + "Слот заблокирован")) {
+                for (int x = 27; x <= 35; x++) {
+                    inv.setItem(x, new ItemStack(Material.AIR));
+                }
+            }
         }
-        else {
+        if (!inv.contains(Material.RED_SHULKER_BOX) || !inv.contains(Material.SHULKER_BOX) || !inv.contains(Material.PURPLE_SHULKER_BOX)) {
             for (int x = 9; x <= 35; x++) {
                 slotMeta.setLore(Arrays.asList(ChatColor.WHITE + "Чтобы разблокировать, ", ChatColor.WHITE + "купите рюкзак.", "id: " + x));
                 slot.setItemMeta(slotMeta);
@@ -95,33 +132,49 @@ public class inventorylimitEvents implements Listener {
     @EventHandler
     public void onItemInteract(InventoryClickEvent event) {
         int slot = event.getSlot();
-        String item = event.getWhoClicked().getInventory().getItem(slot).getItemMeta().getDisplayName();
+        ItemStack item = event.getWhoClicked().getInventory().getItem(slot);
+
         if (item != null) {
-            if (item.equalsIgnoreCase(ChatColor.RED + "Слот заблокирован")) {
+            String meta = item.getItemMeta().getDisplayName();
+            if (meta.equalsIgnoreCase(ChatColor.RED + "Слот заблокирован")) {
                 event.setCancelled(true);
-                plugin.getLogger().info("Клик на барьер");
             }
         }
     }
 
     @EventHandler
     public void onInventoryEvent(InventoryOpenEvent event) {
-        Inventory inv = event.getInventory();
-        if (inv.getType().equals(InventoryType.PLAYER)) {
-            if (inv.contains(Material.PURPLE_SHULKER_BOX)) {
-                for (int x = 9; x <= 35; x++) {
-                    inv.setItem(x, new ItemStack(Material.AIR));
-                }
-            }
-            if (inv.contains(Material.RED_SHULKER_BOX)) {
-                for (int x = 18; x <= 35; x++) {
-                    inv.setItem(x, new ItemStack(Material.AIR));
-                }
-            } else if (inv.contains(Material.SHULKER_BOX)) {
 
-                for (int x = 27; x <= 35 - slots; x++) {
-                    inv.setItem(x, new ItemStack(Material.AIR));
-                }
+        ItemStack slot = new ItemStack(Material.BARRIER);
+        slot.setAmount(1);
+        ItemMeta slotMeta = slot.getItemMeta();
+        slotMeta.setDisplayName(ChatColor.RED + "Слот заблокирован");
+        slotMeta.setCustomModelData(10000);
+
+        Inventory inv = event.getInventory();
+        if (inv.contains(Material.PURPLE_SHULKER_BOX)) {
+            for (int x = 9; x <= 35; x++) {
+                inv.setItem(x, new ItemStack(Material.AIR));
+            }
+        }
+        if (inv.contains(Material.RED_SHULKER_BOX)) {
+            for (int x = 18; x <= 35; x++) {
+                inv.setItem(x, new ItemStack(Material.AIR));
+            }
+            for (int x = 9; x <= 17; x++) {
+                slotMeta.setLore(Arrays.asList(ChatColor.WHITE + "Чтобы разблокировать, ", ChatColor.WHITE + "купите рюкзак.", "id: " + x));
+                slot.setItemMeta(slotMeta);
+                inv.setItem(x, slot);
+            }
+
+        } if (inv.contains(Material.SHULKER_BOX)) {
+            for (int x = 27; x <= 35 - slots; x++) {
+                inv.setItem(x, new ItemStack(Material.AIR));
+            }
+            for (int x = 9; x <= 26; x++) {
+                slotMeta.setLore(Arrays.asList(ChatColor.WHITE + "Чтобы разблокировать, ", ChatColor.WHITE + "купите рюкзак.", "id: " + x));
+                slot.setItemMeta(slotMeta);
+                inv.setItem(x, slot);
             }
         }
     }

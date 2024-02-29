@@ -1,5 +1,6 @@
 package org.kelsi.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,6 +17,7 @@ public class deathEvents implements Listener {
 
     @EventHandler
     public void onDeathEvent(PlayerDeathEvent event) {
+        //Потеря опыта
         event.getEntity();
         Player player = event.getEntity();
 
@@ -33,6 +35,9 @@ public class deathEvents implements Listener {
             player.setLevel(level);
             player.sendMessage(ChatColor.RED + "\nПоскольку ваш опыт меньше или равен 0.1, то вас уровень понижен на 1 единицу.\nТеперь ваш уровень равен: " + level + "\n");
         }
+
+        //Психика
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "svar add psycho 5 " + player.getName());
     }
 
 }

@@ -31,7 +31,7 @@ public class damageEvent implements Listener {
             entity.damage(final_damage);
             entity.setVelocity(damager.getLocation().getDirection().multiply(1.5));
             if (!plugin.getConfig().getBoolean("settings.debug")) {
-                plugin.getLogger().info("Базовый урон: " + damage + "\nмин./макс. урон " + min + "/" + max + "\n \nфинальный урон:");
+                plugin.getLogger().info("Базовый урон: " + damage + "\nмин./макс. урон " + min + "/" + max + "\n \nфинальный урон: " + final_damage);
             }
         }
     }

@@ -38,6 +38,12 @@ public class deathEvents implements Listener {
 
         //Психика
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "svar add psycho 5 " + player.getName());
+        joinEvent.psycho.put(player, joinEvent.psycho.get(player) + 5.0);
+
+        if (plugin.getConfig().getBoolean("settings.debug")) {
+            Bukkit.getLogger().info("psycho added 5");
+        }
     }
+
 
 }

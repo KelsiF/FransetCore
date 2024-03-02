@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.kelsi.listeners.joinEvent.*;
 
 public class killEvent implements Listener {
 
@@ -24,6 +25,10 @@ public class killEvent implements Listener {
 
         if (killer != null) {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "svar add psycho 2.5 " + killer.getName());
+            joinEvent.psycho.put(killer.getPlayer(), joinEvent.psycho.get(killer.getPlayer()) + 2.5);
+            if (plugin.getConfig().getBoolean("settings.debug")) {
+                Bukkit.getLogger().info("psycho added 2.5");
+            }
         }
     }
 
@@ -34,6 +39,10 @@ public class killEvent implements Listener {
         Player killer = entity.getKiller();
         if (killer != null) {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "svar add psycho 0.5 " + killer.getName());
+            joinEvent.psycho.put(killer.getPlayer(), joinEvent.psycho.get(killer.getPlayer()) + 0.5);
+            if (plugin.getConfig().getBoolean("settings.debug")) {
+                Bukkit.getLogger().info("psycho added 0.5");
+            }
         }
     }
 

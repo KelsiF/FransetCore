@@ -23,21 +23,18 @@ public final class fransetcore extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new levelupEvent(this), this);
         getServer().getPluginManager().registerEvents(new damageEvent(this), this);
         getServer().getPluginManager().registerEvents(new killEvent(this), this);
+        getServer().getPluginManager().registerEvents(new moveEvent(this), this);
         Objects.requireNonNull(getCommand("broadcast")).setExecutor(new broadcastCommand());
         Objects.requireNonNull(getCommand("me")).setExecutor(new meCommand());
         Objects.requireNonNull(getCommand("do")).setExecutor(new doCommand());
         Objects.requireNonNull(getCommand("try")).setExecutor(new tryCommand());
         Objects.requireNonNull(getCommand("roll")).setExecutor(new rollCommand());
-        Objects.requireNonNull(getCommand("setevent")).setExecutor(new seteventCommand(this));
         Objects.requireNonNull(getCommand("removeevent")).setExecutor(new removeeventCommand(this));
-        Objects.requireNonNull(getCommand("event")).setExecutor(new eventCommand(this));
         Objects.requireNonNull(getCommand("spawn")).setExecutor(new spawnCommand(this));
         Objects.requireNonNull(getCommand("loc")).setExecutor(new locCommand(this));
         Objects.requireNonNull(getCommand("reset")).setExecutor(new resetCommand(this));
-        getCommand("loctp").setExecutor(new loctpCommand(this));
         getCommand("take").setExecutor(new moneytakeCommand(this));
-
-
+        getCommand("givestats").setExecutor(new givestatsCommand(this));
         YamlConfiguration conf = (YamlConfiguration) getConfig();
         getConfig().options().copyDefaults();
         saveDefaultConfig();

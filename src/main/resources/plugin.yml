@@ -1,7 +1,7 @@
 name: FransetCore
 version: ${project.version}
 main: org.kelsi.fransetcore
-api-version: 1.16
+api-version: 1.20
 authors: [ Kelsi ]
 softdepend: [PlaceholderAPI]
 commands:
@@ -36,3 +36,5 @@ commands:
     usage: "Чтобы увеличить количество задоначенной суммы игрока, используйте команду в формате: \n/donated <ник игрока> <число>"
   take:
     usage: "/take <player> <number>\nПример: /take KelsiDev 100 - у игрока KelsiDev будет взято 100 монет."
+  givestats:
+    usage: "/givestats <player> <старая статистика> <прирост к статистике> <статистика>\nПример: /givestats Kelsidev 7 1 health"

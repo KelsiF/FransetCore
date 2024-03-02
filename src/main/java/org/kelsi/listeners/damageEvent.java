@@ -19,7 +19,7 @@ public class damageEvent implements Listener {
     public void onDamage(EntityDamageByEntityEvent event) {
         Entity damager = event.getDamager();
 
-        double damage = event.getDamage();
+        double damage = Math.round(event.getDamage() * 100.0) / 100.0;
         double min = damage/1.5;
         double max = damage*1.5;
         double final_damage = damage/1.5 + (new Random().nextDouble() * (damage*1.5-damage/1.5));
@@ -30,7 +30,7 @@ public class damageEvent implements Listener {
             event.setCancelled(true);
             entity.damage(final_damage);
             entity.setVelocity(damager.getLocation().getDirection().multiply(1.5));
-            if (!plugin.getConfig().getBoolean("settings.debug")) {
+            if (plugin.getConfig().getBoolean("settings.debug")) {
                 plugin.getLogger().info("Базовый урон: " + damage + "\nмин./макс. урон " + min + "/" + max + "\n \nфинальный урон: " + final_damage);
             }
         }

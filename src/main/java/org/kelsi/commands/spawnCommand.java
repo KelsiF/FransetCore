@@ -22,7 +22,7 @@ public class spawnCommand implements CommandExecutor {
 
         Player player = (Player) sender;
         if (args.length <= 0) {
-            Location loc = plugin.getConfig().getLocation("spawn");
+            Location loc = plugin.getConfig().getLocation("locations.spawn");
             if (loc != null) {
                 player.teleport(loc);
             } else {
@@ -34,7 +34,7 @@ public class spawnCommand implements CommandExecutor {
             if (args[0].equals("set")) {
                 if (sender.hasPermission("fransetcore.setspawn")) {
                     Location loc = player.getLocation();
-                    plugin.getConfig().set("spawn", loc);
+                    plugin.getConfig().createSection("locations").set("spawn", loc);
                     plugin.saveConfig();
 
                     player.sendMessage(ChatColor.GREEN + "Точка спавна установлена!");
@@ -45,6 +45,9 @@ public class spawnCommand implements CommandExecutor {
 
                     return true;
                 }
+            }
+            if (args[0].equals("help")) {
+                return false;
             }
         }
 

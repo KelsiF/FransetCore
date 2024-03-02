@@ -37,7 +37,7 @@ commands:
   take:
     usage: "/take <player> <number>\nПример: /take KelsiDev 100 - у игрока KelsiDev будет взято 100 монет."
   givestats:
-    usage: "/givestats <player> <старая статистика> <прирост к статистике> <статистика>\nПример: /givestats Kelsidev 7 1 health"
+    usage: "/givestats <player> <старая статистика> <прирост к статистике> <статистика> <название>\nПример: /givestats Kelsidev 7 1 health mmoitems_HEALTH"
   psychopotion:
     usage: "/psychopotion <player> <number>"
     aliases:

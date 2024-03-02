@@ -23,7 +23,6 @@ public final class fransetcore extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new levelupEvent(this), this);
         getServer().getPluginManager().registerEvents(new damageEvent(this), this);
         getServer().getPluginManager().registerEvents(new killEvent(this), this);
-        getServer().getPluginManager().registerEvents(new moveEvent(this), this);
         Objects.requireNonNull(getCommand("broadcast")).setExecutor(new broadcastCommand());
         Objects.requireNonNull(getCommand("me")).setExecutor(new meCommand());
         Objects.requireNonNull(getCommand("do")).setExecutor(new doCommand());
@@ -37,6 +36,9 @@ public final class fransetcore extends JavaPlugin implements Listener {
         getCommand("givestats").setExecutor(new givestatsCommand(this));
         getCommand("psychopotion").setExecutor(new psychopotionCommand(this));
         YamlConfiguration conf = (YamlConfiguration) getConfig();
+        if (!getConfig().contains("stats")) {
+            getConfig().createSection("stats");
+        }
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 

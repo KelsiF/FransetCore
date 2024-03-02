@@ -15,7 +15,7 @@ public class givestatsCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        // /givestats KelsiDev[0] 7[1] 1[2] health[3]
+        // /givestats KelsiDev[0] 7[1] 1[2] health[3] mmoitems_HEALTH[4]
         if (args.length <= 0) {
             return false;
         } else if (args.length >= 1) {
@@ -23,12 +23,20 @@ public class givestatsCommand implements CommandExecutor {
                 if (args[1] != null) {
                     if (args[2] != null) {
                         if (args[3] != null) {
-                            Player player = Bukkit.getPlayer(args[0]);
-                            String stat = args[3];
-                            int value = Integer.parseInt(args[1] + args[2]);
-                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "sk modifier add " + player + " " + stat + " " + value + " silent");
+                            if (args[4] != null) {
+                                if (sender.hasPermission("fransetcore.admin")) {
+                                    Player player = Bukkit.getPlayer(args[0]);
+                                    String stat = args[3];
+                                    String name = args[4];
+                                    int value = Integer.parseInt(args[1] + args[2]);
+                                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "sk modifier remove " + player.getName() + " " + name + " silent true");
+                                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "sk modifier add " + player.getName() + " " + stat + " " + value + " " + name);
+                                }
 
-                            return true;
+                                return true;
+                            } else {
+                                return false;
+                            }
                         } else {
                             return false;
                         }

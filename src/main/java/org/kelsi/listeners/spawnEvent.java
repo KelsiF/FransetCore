@@ -40,6 +40,7 @@ public class spawnEvent implements Listener {
     public void onPlayerReSpawn(PlayerRespawnEvent event) {
         Player player = event.getPlayer();
         Location loc = plugin.getConfig().getLocation("locations.spawn");
+        plugin.getConfig().options().copyDefaults();
 
         event.setRespawnLocation(loc);
         player.teleport(loc);

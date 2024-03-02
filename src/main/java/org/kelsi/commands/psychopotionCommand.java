@@ -20,10 +20,11 @@ public class psychopotionCommand implements CommandExecutor {
             return false;
         } else {
             if (args[1] != null) {
-                Player player = Bukkit.getPlayer(args[0]);
-                int value = Integer.parseInt(args[1]);
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "svar reduce psycho " + value + " " + player);
-
+                if (sender.hasPermission("fransetcore.admin")) {
+                    Player player = Bukkit.getPlayer(args[0]);
+                    int value = Integer.parseInt(args[1]);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "svar reduce psycho " + value + " " + player.getName());
+                }
                 return true;
             } else {
                 return false;

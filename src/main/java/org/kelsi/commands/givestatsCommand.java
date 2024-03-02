@@ -1,6 +1,7 @@
 package org.kelsi.commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -28,9 +29,13 @@ public class givestatsCommand implements CommandExecutor {
                                     Player player = Bukkit.getPlayer(args[0]);
                                     String stat = args[3];
                                     String name = args[4];
-                                    int value = Integer.parseInt(args[1] + args[2]);
+                                    Integer last = Math.round(Integer.parseInt(args[1]));
+                                    Integer modifier = Integer.parseInt(args[2]);
+                                    Integer value = last+modifier;
                                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "sk modifier remove " + player.getName() + " " + name + " silent true");
                                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "sk modifier add " + player.getName() + " " + stat + " " + name + " " + value);
+
+                                    player.sendMessage(ChatColor.GREEN + "Характеристика " + args[3] + ChatColor.GREEN + "Была улучшена");
                                 }
 
                                 return true;

@@ -30,7 +30,7 @@ public class givestatsCommand implements CommandExecutor {
                                     String name = args[4];
                                     int value = Integer.parseInt(args[1] + args[2]);
                                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "sk modifier remove " + player.getName() + " " + name + " silent true");
-                                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "sk modifier add " + player.getName() + " " + stat + " " + value + " " + name);
+                                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "sk modifier add " + player.getName() + " " + stat + " " + name + " " + value);
                                 }
 
                                 return true;

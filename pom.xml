@@ -6,7 +6,7 @@
 
     <groupId>org.kelsi</groupId>
     <artifactId>fransetcore</artifactId>
-    <version>1.5.3</version>
+    <version>1.5.4.2</version>
     <packaging>jar</packaging>
 
     <name>FransetCore</name>

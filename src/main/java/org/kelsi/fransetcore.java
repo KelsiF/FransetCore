@@ -35,6 +35,7 @@ public final class fransetcore extends JavaPlugin implements Listener {
         Objects.requireNonNull(getCommand("reset")).setExecutor(new resetCommand(this));
         getCommand("take").setExecutor(new moneytakeCommand(this));
         getCommand("givestats").setExecutor(new givestatsCommand(this));
+        getCommand("psychopotion").setExecutor(new psychopotionCommand(this));
         YamlConfiguration conf = (YamlConfiguration) getConfig();
         getConfig().options().copyDefaults();
         saveDefaultConfig();

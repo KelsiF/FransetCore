@@ -1,10 +1,7 @@
 package org.kelsi;
 
-import com.github.yannicklamprecht.worldborder.api.WorldBorderApi;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.kelsi.commands.*;
 import org.kelsi.listeners.*;
@@ -58,15 +55,6 @@ public final class fransetcore extends JavaPlugin implements Listener {
         }
 
 
-        RegisteredServiceProvider<WorldBorderApi> worldBorderApiRegisteredServiceProvider = getServer().getServicesManager().getRegistration(WorldBorderApi.class);
-
-        if (worldBorderApiRegisteredServiceProvider == null) {
-            getLogger().info("API not found");
-            getServer().getPluginManager().disablePlugin(this);
-            return;
-        }
-
-        WorldBorderApi worldBorderApi = worldBorderApiRegisteredServiceProvider.getProvider();
     }
 
     @Override

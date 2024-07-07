@@ -22,7 +22,7 @@ public class spawnCommand implements CommandExecutor {
 
         Player player = (Player) sender;
         if (args.length <= 0) {
-            Location loc = plugin.getConfig().getLocation("spawn");
+            Location loc = plugin.getConfig().getLocation("locations.spawn");
             if (loc != null) {
                 player.teleport(loc);
             } else {

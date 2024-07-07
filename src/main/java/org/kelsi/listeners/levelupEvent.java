@@ -31,5 +31,7 @@ public class levelupEvent implements Listener {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "skill xp add " + player.getName() + " sorcery " + modifier);
             player.sendMessage(ChatColor.GREEN + "\nИз-за повышения уровня вы получили опыт к характеристикам" + ChatColor.GRAY + "(/skills)" + "\n");
         }
+
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "svar add level_points 1 " + player.getName());
     }
 }

@@ -1,8 +1,10 @@
 package org.kelsi;
 
+import com.github.yannicklamprecht.worldborder.api.WorldBorderApi;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.kelsi.commands.*;
 import org.kelsi.listeners.*;
@@ -26,17 +28,17 @@ public final class fransetcore extends JavaPlugin implements Listener {
         Objects.requireNonNull(getCommand("do")).setExecutor(new doCommand());
         Objects.requireNonNull(getCommand("try")).setExecutor(new tryCommand());
         Objects.requireNonNull(getCommand("roll")).setExecutor(new rollCommand());
-        Objects.requireNonNull(getCommand("setevent")).setExecutor(new seteventCommand(this));
         Objects.requireNonNull(getCommand("removeevent")).setExecutor(new removeeventCommand(this));
-        Objects.requireNonNull(getCommand("event")).setExecutor(new eventCommand(this));
         Objects.requireNonNull(getCommand("spawn")).setExecutor(new spawnCommand(this));
         Objects.requireNonNull(getCommand("loc")).setExecutor(new locCommand(this));
         Objects.requireNonNull(getCommand("reset")).setExecutor(new resetCommand(this));
-        getCommand("loctp").setExecutor(new loctpCommand(this));
-        getCommand("take").setExecutor(new moneytakeCommand(this));
+        Objects.requireNonNull(getCommand("take")).setExecutor(new moneytakeCommand(this));
+        Objects.requireNonNull(getCommand("givestats")).setExecutor(new givestatsCommand(this));
+        Objects.requireNonNull(getCommand("fborder")).setExecutor(new fborderCommand(this));
 
-
-        YamlConfiguration conf = (YamlConfiguration) getConfig();
+        if (!getConfig().contains("stats")) {
+            getConfig().createSection("stats");
+        }
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
@@ -54,6 +56,17 @@ public final class fransetcore extends JavaPlugin implements Listener {
             getLogger().warning("Could not find PlaceholderAPI! This plugin is required.");
             Bukkit.getPluginManager().disablePlugin(this);
         }
+
+
+        RegisteredServiceProvider<WorldBorderApi> worldBorderApiRegisteredServiceProvider = getServer().getServicesManager().getRegistration(WorldBorderApi.class);
+
+        if (worldBorderApiRegisteredServiceProvider == null) {
+            getLogger().info("API not found");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
+        WorldBorderApi worldBorderApi = worldBorderApiRegisteredServiceProvider.getProvider();
     }
 
     @Override

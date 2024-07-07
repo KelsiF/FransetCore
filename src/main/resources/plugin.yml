@@ -1,9 +1,16 @@
 name: FransetCore
 version: ${project.version}
 main: org.kelsi.fransetcore
-api-version: 1.16
+api-version: 1.20
 authors: [ Kelsi ]
 softdepend: [PlaceholderAPI]
+permission:
+  fransetcore.admin:
+    description: "permission node for admin commands and events"
+    default: op
+  fransetcore.sponsor:
+    description: "permission node for sponsors"
+    default: op
 commands:
   broadcast:
     aliases: [bc, bcast]
@@ -36,3 +43,7 @@ commands:
     usage: "Чтобы увеличить количество задоначенной суммы игрока, используйте команду в формате: \n/donated <ник игрока> <число>"
   take:
     usage: "/take <player> <number>\nПример: /take KelsiDev 100 - у игрока KelsiDev будет взято 100 монет."
+  givestats:
+    usage: "/givestats <player> <старая статистика> <прирост к статистике> <статистика> <название>\nПример: /givestats Kelsidev 7 1 health mmoitems_HEALTH"
+  fborder:
+    usage: "/fborder <player> <size>\nПример: /fborder KelsiDev 100.0"

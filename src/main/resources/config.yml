@@ -1,0 +1,4 @@
+settings:
+  debug: false
+  whitelist: false
+spawn:

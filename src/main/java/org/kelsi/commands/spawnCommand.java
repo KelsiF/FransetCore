@@ -32,7 +32,7 @@ public class spawnCommand implements CommandExecutor {
         }
         if (args.length > 0) {
             if (args[0].equals("set")) {
-                if (sender.hasPermission("fransetcore.setspawn")) {
+                if (sender.hasPermission("fransetcore.admin")) {
                     Location loc = player.getLocation();
                     plugin.getConfig().set("spawn", loc);
                     plugin.saveConfig();
@@ -45,6 +45,9 @@ public class spawnCommand implements CommandExecutor {
 
                     return true;
                 }
+            }
+            if (args[0].equals("help")) {
+                return false;
             }
         }
 

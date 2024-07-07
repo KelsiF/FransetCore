@@ -6,10 +6,11 @@
 
     <groupId>org.kelsi</groupId>
     <artifactId>fransetcore</artifactId>
-    <version>1.5.0</version>
+    <version>1.6</version>
     <packaging>jar</packaging>
 
     <name>FransetCore</name>
+    <description>Core plugin for minecraft server Franset</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -69,13 +70,17 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+        <repository>
+            <id>eldonexus</id>
+            <url>https://eldonexus.de/repository/maven-releases/</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
-            <groupId>com.destroystokyo.paper</groupId>
+            <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.16.5-R0.1-SNAPSHOT</version>
+            <version>1.20-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -84,10 +89,12 @@
             <version>2.11.5</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
-            <groupId>com.github.YiC200333</groupId>
-            <artifactId>XConomyAPI</artifactId>
-            <version>2.25.1</version>
+            <groupId>com.github.yannicklamprecht</groupId>
+            <artifactId>worldborderapi</artifactId>
+            <version>1.210.0</version>
+            <classifier>dev</classifier>
             <scope>provided</scope>
         </dependency>
     </dependencies>

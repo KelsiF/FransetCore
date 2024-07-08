@@ -1,6 +1,13 @@
 package org.kelsi;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.ListenerPriority;
+import com.comphenix.protocol.events.PacketAdapter;
+import com.comphenix.protocol.events.PacketContainer;
 import org.bukkit.Bukkit;
+import org.bukkit.WorldBorder;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.kelsi.commands.*;
@@ -11,6 +18,7 @@ import java.util.*;
 
 public final class fransetcore extends JavaPlugin implements Listener {
 
+    private ProtocolManager protocolManager;
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -53,6 +61,12 @@ public final class fransetcore extends JavaPlugin implements Listener {
             getLogger().warning("Could not find PlaceholderAPI! This plugin is required.");
             Bukkit.getPluginManager().disablePlugin(this);
         }
+
+        protocolManager = ProtocolLibrary.getProtocolManager();
+        WorldBorder border = Objects.requireNonNull(Bukkit.getWorld("spawn")).getWorldBorder();
+        border.setSize(1000);
+        WorldBorder border2 = Objects.requireNonNull(Bukkit.getWorld("play")).getWorldBorder();
+        border2.setSize(1000);
 
 
     }

@@ -4,6 +4,7 @@ main: org.kelsi.fransetcore
 api-version: 1.20
 authors: [ Kelsi ]
 softdepend: [PlaceholderAPI]
+depend: [ ProtocolLib ]
 permission:
   fransetcore.admin:
     description: "permission node for admin commands and events"

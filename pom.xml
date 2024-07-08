@@ -6,7 +6,7 @@
 
     <groupId>org.kelsi</groupId>
     <artifactId>fransetcore</artifactId>
-    <version>1.6</version>
+    <version>1.6.1</version>
     <packaging>jar</packaging>
 
     <name>FransetCore</name>
@@ -71,8 +71,8 @@
             <url>https://jitpack.io</url>
         </repository>
         <repository>
-            <id>eldonexus</id>
-            <url>https://eldonexus.de/repository/maven-releases/</url>
+            <id>dmulloy2-repo</id>
+            <url>https://repo.dmulloy2.net/repository/public/</url>
         </repository>
     </repositories>
 
@@ -89,12 +89,10 @@
             <version>2.11.5</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
-            <groupId>com.github.yannicklamprecht</groupId>
-            <artifactId>worldborderapi</artifactId>
-            <version>1.210.0</version>
-            <classifier>dev</classifier>
+            <groupId>com.comphenix.protocol</groupId>
+            <artifactId>ProtocolLib</artifactId>
+            <version>5.1.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

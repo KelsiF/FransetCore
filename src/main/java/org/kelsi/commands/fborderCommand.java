@@ -13,10 +13,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.kelsi.fransetcore;
-import org.kelsi.fransetcore.*;
 
 
-public class fborderCommand implements CommandExecutor {
+public class fborderCommand implements CommandExecutor{
 
     private final fransetcore plugin;
 
@@ -39,6 +38,12 @@ public class fborderCommand implements CommandExecutor {
                 PacketContainer packet = new PacketContainer(PacketType.Play.Server.SET_BORDER_SIZE);
                 packet.getWorldBorderActions().writeSafely(0, EnumWrappers.WorldBorderAction.SET_SIZE);
                 packet.getDoubles().write(0, size);
+                protocolManager.sendServerPacket(target, packet);
+
+                PacketContainer packet2 = new PacketContainer(PacketType.Play.Server.SET_BORDER_CENTER);
+                packet.getWorldBorderActions().writeSafely(0, EnumWrappers.WorldBorderAction.SET_CENTER);
+                packet.getDoubles().write(0, target.getLocation().getX());
+                packet.getDoubles().write(1, target.getLocation().getY());
                 protocolManager.sendServerPacket(target, packet);
 
                 if (sender instanceof Player) {

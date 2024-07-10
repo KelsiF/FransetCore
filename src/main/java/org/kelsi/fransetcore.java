@@ -24,10 +24,9 @@ public final class fransetcore extends JavaPlugin implements Listener {
         // Plugin startup logic
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new spawnEvent(this), this);
-        //getServer().getPluginManager().registerEvents(new inventorylimitEvents(this), this);
-        getServer().getPluginManager().registerEvents(new deathEvents(this), this);
         getServer().getPluginManager().registerEvents(new joinEvent(this), this);
-        getServer().getPluginManager().registerEvents(new levelupEvent(this), this);
+        getServer().getPluginManager().registerEvents(new worldchangeEvent(this), this);
+
         Objects.requireNonNull(getCommand("broadcast")).setExecutor(new broadcastCommand());
         Objects.requireNonNull(getCommand("me")).setExecutor(new meCommand());
         Objects.requireNonNull(getCommand("do")).setExecutor(new doCommand());

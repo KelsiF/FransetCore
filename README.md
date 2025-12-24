@@ -1,1 +1,2 @@
-# Core plugin for my minecraft server Franset
+# Core plugin for my minecraft server Franset [ABANDONED]
+
